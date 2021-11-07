@@ -1,10 +1,8 @@
-const upload = require("../Helpers/imageUplode");
 const student = require("../Schemas/StudentSchema");
 
 // this is student info add function start
 
-
-const addStudent = async(req, res) => {
+const addStudent = async (req, res) => {
   const {
     name,
     studentId,
@@ -13,8 +11,9 @@ const addStudent = async(req, res) => {
     session,
     department,
     religion,
+    images,
     dob,
-    Gender,
+    gender,
   } = req.body;
 
   try {
@@ -26,9 +25,9 @@ const addStudent = async(req, res) => {
       session,
       department,
       religion,
-      images:req.file.images,
+      images,
       dob,
-      Gender,
+      gender,
     });
     studentPush.save();
     res.send("Informaton added successfully");
@@ -55,7 +54,7 @@ const allStudentGet = async (req, res) => {
 // this is student singal info get function start
 
 const singalStudentInfo = async (req, res) => {
-    const id=req.params.id
+  const id = req.params.id;
   try {
     studentInfo = await student.findById(id);
     res.json(studentInfo);
@@ -69,7 +68,7 @@ const singalStudentInfo = async (req, res) => {
 // this is student singal info delete function start
 
 const deleteStudent = async (req, res) => {
-    const id=req.params.id
+  const id = req.params.id;
   try {
     await student.findOneAndDelete(id);
     res.send("Student Information Delete successfully ");
@@ -93,11 +92,12 @@ const editStudentInfo = async (req, res) => {
     religion,
     images,
     dob,
-    Gender,
+    gender,
   } = req.body;
-    try {
-        const id=req.params.id
-    const UpdateInfo = await student.findOneAndUpdate(id ,
+  try {
+    const id = req.params.id;
+    const UpdateInfo = await student.findOneAndUpdate(
+      id,
       {
         $set: {
           name,
@@ -109,7 +109,7 @@ const editStudentInfo = async (req, res) => {
           religion,
           images,
           dob,
-          Gender,
+          gender,
         },
       },
       { new: true }

@@ -20,14 +20,6 @@ app.use('/student', studentRouter)
 
 
 
-// app.post('/', upload.single('images'),(req, res,) => {
-//   res.send("sucess")
- 
-//   console.log(req.body.images);
-// })
-
-
-
 // DataBase Conncetion
 mongoose.connect(process.env.DB)
   .then(console.log("DataBase Conncet Sucess"))

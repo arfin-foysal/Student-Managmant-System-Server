@@ -1,5 +1,6 @@
 const express = require("express");
 const { addStudent, allStudentGet, singalStudentInfo, deleteStudent, editStudentInfo } = require("../Controllers/StudentController");
+// const upload = require("../Helpers/imageUplode");
 
 
 const studentRouter = express.Router();
